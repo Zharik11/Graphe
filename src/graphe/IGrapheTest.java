@@ -12,7 +12,7 @@ import reprensentaion.*;
 
 class IGrapheTest {
 	private IGraphe[] graphes = { 
-		new GrapheLArcs(), new GrapheLArcs(),
+		new GrapheLArcs(), new GrapheLAdj(),
 		new GrapheMAdj(),  new GrapheHHAdj()
 
 	};

@@ -16,6 +16,10 @@ public class GrapheMAdj implements IGraphe {
         this();
         peupler(s);
     }
+    /**
+     * Ajoute un sommet au graphe
+     * @param noeud le sommet à ajouter
+     */
     @Override
     public void ajouterSommet(String noeud) {
         if (!indices.containsKey(noeud)) {
@@ -32,8 +36,12 @@ public class GrapheMAdj implements IGraphe {
             matrice = nouvelleMatrice;
         }
     }
-
-
+    /**
+     * Ajoute un arc au graphe
+     * @param source le sommet source de l'arc
+     * @param destination le sommet destination de l'arc
+     * @param valeur la valuation de l'arc
+     */
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
         if(contientArc(source, destination)) {
@@ -58,8 +66,10 @@ public class GrapheMAdj implements IGraphe {
         int dest_index = getIndice(destination);
         matrice[scr_index][dest_index] = valeur;
     }
-
-
+    /**
+     * Supprime un sommet du graphe
+     * @param noeud le sommet à supprimer
+     */
     @Override
     public void oterSommet(String noeud) {
         if (!indices.containsKey(noeud)) { // si le sommet n'existe pas dans le graphe
@@ -88,7 +98,11 @@ public class GrapheMAdj implements IGraphe {
         indices = newIndices;
     }
 
-
+    /**
+     * Supprime un arc du graphe
+     * @param source le sommet source de l'arc
+     * @param destination le sommet destination de l'arc
+     */
     @Override
     public void oterArc(String source, String destination) {
         // Vérifier si les sommets source et destination existent dans le graphe
@@ -99,6 +113,11 @@ public class GrapheMAdj implements IGraphe {
         // Supprimer l'arc correspondant dans la matrice d'adjacence
         matrice[indices.get(source)][indices.get(destination)] = 0;
     }
+    /**
+     * Vérifie si un sommet est présent dans le graphe
+     * @param noeud le sommet à vérifier
+     * @return true si le sommet est présent, false sinon
+     */
     @Override
     public List<String> getSommets() {
         List<String> sommets = new ArrayList<>();
@@ -107,7 +126,12 @@ public class GrapheMAdj implements IGraphe {
         }
         return sommets;
     }
-
+    /**
+     * Vérifie si un arc est présent dans le graphe
+     * @param source le sommet source de l'arc
+     * @param destination le sommet destination de l'arc
+     * @return true si l'arc est présent, false sinon
+     */
     @Override
     public List<String> getSucc(String sommet) {
         List<String> successeurs = new ArrayList<>();
@@ -119,7 +143,6 @@ public class GrapheMAdj implements IGraphe {
         }
         return successeurs;
     }
-
     private String getSommet(int i) {
         for (String sommet : indices.keySet()) {
             if (indices.get(sommet) == i) {
@@ -145,7 +168,11 @@ public class GrapheMAdj implements IGraphe {
         //return indices.get(sommet);
         return indices.getOrDefault(sommet, -1);
     }
-
+    /**
+     * Vérifie si un sommet est présent dans le graphe
+     * @param sommet le sommet à vérifier
+     * @return true si le sommet est présent, false sinon
+     */
     @Override
     public boolean contientSommet(String sommet) {
         for (String s : indices.keySet()) {
@@ -154,7 +181,12 @@ public class GrapheMAdj implements IGraphe {
         }
         return false;
     }
-
+    /**
+     * Vérifie si un arc est présent dans le graphe
+     * @param source le sommet source de l'arc
+     * @param destination le sommet destination de l'arc
+     * @return true si l'arc est présent, false sinon
+     */
     @Override
     public boolean contientArc(String src, String dest) {
         // Vérifier que les sommets sont présents dans le graphe

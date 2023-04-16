@@ -14,6 +14,10 @@ public class GrapheLAdj implements IGraphe {
         this();
         peupler(s);
     }
+    /**
+     * Peuple le graphe à partir d'une chaîne de caractères.
+     * @param s la chaîne de caractères
+     */
 
     @Override
     public void ajouterSommet(String noeud) {
@@ -21,7 +25,11 @@ public class GrapheLAdj implements IGraphe {
             ladj.put(noeud, new ArrayList<>());
         }
     }
-
+    /** Ajoute un arc au graphe
+     * @param source le sommet source de l'arc
+     * @param destination le sommet destination de l'arc
+     * @param valeur la valuation de l'arc
+     */
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
         if (contientArc(source, destination)) throw new IllegalArgumentException("arc déjà présent");
@@ -32,7 +40,9 @@ public class GrapheLAdj implements IGraphe {
             ladj.get(source).add(new Arc(source, destination, valeur));
         }
     }
-
+    /** Supprime un sommet du graphe
+     * @param noeud le sommet à supprimer
+     */
     @Override
     public void oterSommet(String noeud) {
         ladj.remove(noeud);
@@ -40,13 +50,19 @@ public class GrapheLAdj implements IGraphe {
             ladj.get(s).removeIf(arc -> arc.getDestination().equals(noeud));
         }
     }
-
+    /** Supprime un arc du graphe
+     * @param source le sommet source de l'arc
+     * @param destination le sommet destination de l'arc
+     */
     @Override
     public void oterArc(String source, String destination) {
         if (!contientArc(source, destination)) throw new IllegalArgumentException("arc non présent");
         ladj.get(source).removeIf(arc -> arc.getDestination().equals(destination));
     }
-
+    /** Vérifie si le graphe contient un sommet
+     * @param sommet le sommet à vérifier
+     * @return true si le sommet est présent, false sinon
+     */
     @Override
     public List<String> getSommets() {
         List<String> sommets = new ArrayList<>();
@@ -56,7 +72,10 @@ public class GrapheLAdj implements IGraphe {
 
         return sommets;
     }
-
+    /** Renvoie la liste des successeurs d'un sommet
+     * @param sommet le sommet dont on veut les successeurs
+     * @return la liste des successeurs
+     */
     @Override
     public List<String> getSucc(String sommet) {
         List<String> succ = new ArrayList<>();
@@ -65,7 +84,11 @@ public class GrapheLAdj implements IGraphe {
         }
         return succ;
     }
-
+    /** Renvoie la valuation d'un arc
+     * @param src le sommet source de l'arc
+     * @param dest le sommet destination de l'arc
+     * @return la valuation de l'arc
+     */
     @Override
     public int getValuation(String src, String dest) {
         for (Arc arc : ladj.get(src)) {
@@ -85,7 +108,11 @@ public class GrapheLAdj implements IGraphe {
         }
         return false;
     }
-
+    /** Vérifie si le graphe contient un arc
+     * @param src le sommet source de l'arc
+     * @param dest le sommet destination de l'arc
+     * @return true si l'arc est présent, false sinon
+     */
     @Override
     public boolean contientArc(String src, String dest) {
         if (!contientSommet(src) || !contientSommet(dest)) {
@@ -98,7 +125,6 @@ public class GrapheLAdj implements IGraphe {
         }
         return false;
     }
-
     public String toString() {
         StringBuilder s = new StringBuilder();
         List<String> sommetsTries = new ArrayList<String>(getSommets());

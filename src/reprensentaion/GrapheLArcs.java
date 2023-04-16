@@ -18,14 +18,21 @@ public class GrapheLArcs implements IGraphe{
         this();
         peupler(s);
     }
-
+    /**
+     * Peuple le graphe à partir d'une chaîne de caractères.
+     * @param s la chaîne de caractères
+     */
     @Override
     public void ajouterSommet(String noeud) {
         if(!contientSommet(noeud)){
             arcs.add(new Arc(noeud, "", 0));
         }
     }
-
+    /** Ajoute un arc au graphe
+     * @param source le sommet source de l'arc
+     * @param destination le sommet destination de l'arc
+     * @param valeur la valuation de l'arc
+     */
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
         if(contientArc(source,destination)) throw  new IllegalArgumentException("arc déjà présent");
@@ -40,6 +47,11 @@ public class GrapheLArcs implements IGraphe{
         }
 
     }
+    /** Vérifie si un arc est présent dans le graphe
+     * @param source le sommet source de l'arc
+     * @param destination le sommet destination de l'arc
+     * @return true si l'arc est présent, false sinon
+     */
     public boolean DestVide(String sommet){
         //assert(contientSommet(sommet));
         for (Arc arc: arcs) {
@@ -49,18 +61,26 @@ public class GrapheLArcs implements IGraphe{
         }
         return false;
     }
-
+    /** Supprime un sommet du graphe
+     * @param noeud le sommet à supprimer
+     */
     @Override
     public void oterSommet(String noeud) {
         arcs.removeIf(arc -> arc.getSource().equals(noeud) || arc.getDestination().equals(noeud));
     }
-
+    /** Supprime un arc du graphe
+     * @param source le sommet source de l'arc
+     * @param destination le sommet destination de l'arc
+     */
     @Override
     public void oterArc(String source, String destination) {
         if (!contientArc(source, destination)) throw new IllegalArgumentException("arc non présent");
         arcs.removeIf(arc -> arc.getSource().equals(source) && arc.getDestination().equals(destination));
     }
-
+    /** Vérifie si un sommet est présent dans le graphe
+     * @param noeud le sommet à vérifier
+     * @return true si le sommet est présent, false sinon
+     */
     @Override
     public List<String> getSommets() {
         List<String> sommets = new ArrayList<>();
