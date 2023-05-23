@@ -1,7 +1,5 @@
 package main.java.graphe.core;
 
-import java.util.Objects;
-
 public class Arc implements Comparable<Arc> {
     private String source;
     private String destination;

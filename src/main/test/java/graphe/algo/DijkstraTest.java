@@ -22,7 +22,7 @@ class DijkstraTest {
 
     @Test
     void testerTousLesGraphes() {
-        GraphDirectoryImporter importer = new GraphDirectoryImporter(Main.GRAPHES_REP,
+            GraphDirectoryImporter importer = new GraphDirectoryImporter(Main.GRAPHES_REP,
                 Main.REPONSES_REP, true, new GrapheHHAdj());
         for (CheminATrouver cat : importer) {
             checkAndTime(cat.getGraph(), cat.getSD_arc().getSource(),

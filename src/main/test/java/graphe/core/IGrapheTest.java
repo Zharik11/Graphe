@@ -1,20 +1,12 @@
 package main.test.java.graphe.core;
 
 
-import main.java.graphe.algos.Dijkstra;
-import main.java.graphe.algos.DijkstraTools;
 import main.java.graphe.ihm.GraphImporter;
 import  main.java.graphe.implems.*;
 import org.junit.jupiter.api.Test;
 import  main.java.graphe.core.*;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
