@@ -9,8 +9,8 @@ import  main.java.graphe.implems.*;
 
 
 public class Main {
-    public static final String GRAPHES_REP = "graphes/orig";
-    public static final String REPONSES_REP = "reponses/orig";
+    public static final String GRAPHES_REP = "graphes";
+    public static final String REPONSES_REP = "reponses";
     private static final IGraphe[] prototypes = {
             new GrapheLArcs(),
             new GrapheLAdj(),
